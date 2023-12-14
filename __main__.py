@@ -1,4 +1,5 @@
 import disnake
+from disnake.ext import commands
 import os
 from execve import execute_code
 
@@ -8,8 +9,10 @@ client = disnake.Client(intents=intents)
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 
 
-def is_authorized(user):
-    return True
+def is_not_authorized(user):
+    if user.id == 202004386958934017 or user.bot:
+        return True
+    return False
 
 
 @client.event
@@ -54,10 +57,15 @@ async def handle_execve_command(message, args):
 
 @client.event
 async def on_message(message):
-    if message.author == client.user or not is_authorized(message.author):
-        return
-
     if message.content.startswith('$'):
+        if len(message.content) == 1:
+            await message.channel.send("No command provided.")
+            return
+        
+        if is_not_authorized(message.author):
+            await message.channel.send("You are not authorized to use this bot.")
+            return
+        
         command, *args = message.content[1:].split(maxsplit=1)
         if command == 'execve':
             await handle_execve_command(message, args)
