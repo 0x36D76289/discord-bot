@@ -1,76 +1,95 @@
 import disnake
 from disnake.ext import commands
 import os
-from execve import execute_code
+from src.execve import execute_code
+import random
 
 intents = disnake.Intents.default()
 intents.message_content = True
-client = disnake.Client(intents=intents)
+bot = commands.Bot(command_prefix="$", intents=intents)
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 
 
 def is_not_authorized(user):
-    if user.id == 202004386958934017 or user.bot:
-        return True
+    # if user.id == 202004386958934017 or user.bot:
+    #     return True
     return False
 
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'We have logged in as {client.user}')
+    print(f'We have logged in as {bot.user}')
 
 
-def parse_code_block(code_block):
-    try:
-        header, *code = code_block.split('\n', 2)
-        language = header.split('```')[1].strip()
-        code = '\n'.join(code).rstrip('```').strip()
-        return language, code
-    except Exception as e:
-        return None, None
+class ExecveButton(disnake.ui.View):
+    def __init__(self, language, code, author_id):
+        super().__init__()
+        self.language = language
+        self.code = code
+        self.author_id = author_id
+
+    @disnake.ui.button(label="Relance pitier", style=disnake.ButtonStyle.green)
+    async def execve_button(self, button: disnake.ui.Button, interaction: disnake.MessageInteraction):
+        if interaction.user.id != self.author_id:
+            await interaction.response.send_message("ratio.", ephemeral=True)
+            return
+
+        stdout, stderr = execute_code(self.language, self.code)
+        if stderr:
+            result = f"**Error**:\n```log\n{stderr}```"
+        else:
+            result = f"**Result**:\n```{stdout}```"
+        await interaction.response.send_message(result)
 
 
-async def handle_execve_command(message, args):
-    if not args:
-        await message.channel.send("No code provided.")
+@bot.command()
+async def execve(ctx, *, arg):
+    if is_not_authorized(ctx.author):
+        await ctx.send("You are not authorized to use this bot.")
         return
 
-    code_block = args[0]
-    if not code_block.startswith('```') or not code_block.endswith('```'):
-        await message.channel.send("Please use code blocks to send code.")
-        return
+    def parse_code_block(code_block):
+        try:
+            header, *code = code_block.split('\n', 2)
+            language = header.split('```')[1].strip()
+            code = '\n'.join(code).rstrip('```').strip()
+            return language, code
+        except Exception as e:
+            return None, None
 
-    # Extract language and code from the code block
-    language, code = parse_code_block(code_block)
+    language, code = parse_code_block(arg)
     if not language or not code:
-        await message.channel.send("Invalid code block format.")
+        await ctx.send("Invalid code block format.")
         return
 
-    # Execute code in Docker and get the result
     stdout, stderr = execute_code(language, code)
     if stderr:
         result = f"**Error**:\n```log\n{stderr}```"
     else:
         result = f"**Result**:\n```{stdout}```"
-    await message.channel.send(result)
+
+    view = ExecveButton(language, code, ctx.author.id)
+    await ctx.send(result, view=view)
 
 
-@client.event
-async def on_message(message):
-    if message.content.startswith('$'):
-        if len(message.content) == 1:
-            await message.channel.send("No command provided.")
-            return
-        
-        if is_not_authorized(message.author):
-            await message.channel.send("You are not authorized to use this bot.")
-            return
-        
-        command, *args = message.content[1:].split(maxsplit=1)
-        if command == 'execve':
-            await handle_execve_command(message, args)
-        elif command == "ping":
-            await message.channel.send("pong")
+@bot.command()
+async def wallpaper(ctx):
+    if is_not_authorized(ctx.author):
+        await ctx.send("You are not authorized to use this bot.")
+        return
+
+    await ctx.send(f"https://source.unsplash.com/random/1920x1080?nature,water,{random.randint(0, 100)}")
 
 
-client.run(DISCORD_TOKEN)
+@bot.command()
+async def clear(ctx, arg):
+    if is_not_authorized(ctx.author):
+        await ctx.send("You are not authorized to use this bot.")
+        return
+
+    if arg == "all":
+        await ctx.channel.purge()
+    else:
+        await ctx.channel.purge(limit=int(arg))
+
+bot.run(DISCORD_TOKEN)
