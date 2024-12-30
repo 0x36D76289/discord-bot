@@ -1,0 +1,114 @@
+2024-12-30 21:54:12,869 - DEBUG - discord.client - on_ready has successfully been registered as an event
+2024-12-30 21:54:12,869 - DEBUG - discord.client - on_ready has successfully been registered as an event
+2024-12-30 21:54:12,870 - DEBUG - discord.client - on_command_error has successfully been registered as an event
+2024-12-30 21:54:12,870 - DEBUG - discord.client - on_command_error has successfully been registered as an event
+2024-12-30 21:54:12,870 - DEBUG - asyncio - Using selector: EpollSelector
+2024-12-30 21:54:12,870 - INFO - discord.client - logging in using static token
+2024-12-30 21:54:12,870 - INFO - discord.client - logging in using static token
+2024-12-30 21:54:13,706 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 147b05c8e1fedb8ae080fb92b17ed3a9).
+2024-12-30 21:54:13,706 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 147b05c8e1fedb8ae080fb92b17ed3a9).
+2024-12-30 21:54:15,732 - INFO - __main__ - Logged in as execve (1184607631780892712)
+2024-12-30 21:55:47,560 - ERROR - __main__ - An error occurred while processing the command 'kick': Command raised an exception: Forbidden: 403 Forbidden (error code: 50013): Missing Permissions
+NoneType: None
+2024-12-30 22:02:18,724 - DEBUG - discord.client - on_ready has successfully been registered as an event
+2024-12-30 22:02:18,724 - DEBUG - discord.client - on_ready has successfully been registered as an event
+2024-12-30 22:02:18,725 - DEBUG - discord.client - on_command_error has successfully been registered as an event
+2024-12-30 22:02:18,725 - DEBUG - discord.client - on_command_error has successfully been registered as an event
+2024-12-30 22:02:18,725 - DEBUG - asyncio - Using selector: EpollSelector
+2024-12-30 22:02:18,726 - INFO - discord.client - logging in using static token
+2024-12-30 22:02:18,726 - INFO - discord.client - logging in using static token
+2024-12-30 22:02:19,506 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 3706885e63f03b17955249281ddaaa4e).
+2024-12-30 22:02:19,506 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 3706885e63f03b17955249281ddaaa4e).
+2024-12-30 22:02:21,510 - INFO - __main__ - Logged in as execve (1184607631780892712)
+2024-12-30 22:02:25,231 - ERROR - __main__ - An error occurred while processing the command 'ping': Command raised an exception: NameError: name 'discord' is not defined
+NoneType: None
+2024-12-30 22:04:37,305 - DEBUG - discord.client - on_ready has successfully been registered as an event
+2024-12-30 22:04:37,305 - DEBUG - discord.client - on_ready has successfully been registered as an event
+2024-12-30 22:04:37,305 - DEBUG - discord.client - on_command_error has successfully been registered as an event
+2024-12-30 22:04:37,305 - DEBUG - discord.client - on_command_error has successfully been registered as an event
+2024-12-30 22:04:37,306 - DEBUG - asyncio - Using selector: EpollSelector
+2024-12-30 22:04:37,306 - INFO - discord.client - logging in using static token
+2024-12-30 22:04:37,306 - INFO - discord.client - logging in using static token
+2024-12-30 22:04:38,533 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 2fb9fb1e02e6dd8334fb44ed1f4fcd40).
+2024-12-30 22:04:38,533 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: 2fb9fb1e02e6dd8334fb44ed1f4fcd40).
+2024-12-30 22:04:40,559 - INFO - __main__ - Logged in as execve (1184607631780892712)
+2024-12-30 22:04:48,229 - ERROR - discord.app_commands.tree - Ignoring exception in command tree
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1151, in wrapper
+    await self._call(interaction)
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1283, in _call
+    command, options = self._get_app_command_options(data)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1187, in _get_app_command_options
+    raise CommandNotFound(name, parents)
+discord.app_commands.errors.CommandNotFound: Application command 'ping' not found
+2024-12-30 22:04:48,229 - ERROR - discord.app_commands.tree - Ignoring exception in command tree
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1151, in wrapper
+    await self._call(interaction)
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1283, in _call
+    command, options = self._get_app_command_options(data)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1187, in _get_app_command_options
+    raise CommandNotFound(name, parents)
+discord.app_commands.errors.CommandNotFound: Application command 'ping' not found
+2024-12-30 22:17:25,175 - ERROR - discord.app_commands.tree - Ignoring exception in command tree
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1151, in wrapper
+    await self._call(interaction)
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1283, in _call
+    command, options = self._get_app_command_options(data)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1187, in _get_app_command_options
+    raise CommandNotFound(name, parents)
+discord.app_commands.errors.CommandNotFound: Application command 'active-dev-badge' not found
+2024-12-30 22:17:25,175 - ERROR - discord.app_commands.tree - Ignoring exception in command tree
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1151, in wrapper
+    await self._call(interaction)
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1283, in _call
+    command, options = self._get_app_command_options(data)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1187, in _get_app_command_options
+    raise CommandNotFound(name, parents)
+discord.app_commands.errors.CommandNotFound: Application command 'active-dev-badge' not found
+2024-12-30 22:30:34,488 - DEBUG - discord.client - on_ready has successfully been registered as an event
+2024-12-30 22:30:34,488 - DEBUG - discord.client - on_ready has successfully been registered as an event
+2024-12-30 22:30:34,488 - DEBUG - discord.client - on_command_error has successfully been registered as an event
+2024-12-30 22:30:34,488 - DEBUG - discord.client - on_command_error has successfully been registered as an event
+2024-12-30 22:30:34,489 - DEBUG - asyncio - Using selector: EpollSelector
+2024-12-30 22:30:34,489 - INFO - discord.client - logging in using static token
+2024-12-30 22:30:34,489 - INFO - discord.client - logging in using static token
+2024-12-30 22:30:35,434 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: a69f1c1598764619f2ad9d74e4236a7a).
+2024-12-30 22:30:35,434 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: a69f1c1598764619f2ad9d74e4236a7a).
+2024-12-30 22:30:37,438 - INFO - __main__ - Logged in as execve (1184607631780892712)
+2024-12-30 22:30:54,814 - ERROR - discord.app_commands.tree - Ignoring exception in command tree
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1151, in wrapper
+    await self._call(interaction)
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1283, in _call
+    command, options = self._get_app_command_options(data)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1187, in _get_app_command_options
+    raise CommandNotFound(name, parents)
+discord.app_commands.errors.CommandNotFound: Application command 'ping' not found
+2024-12-30 22:30:54,814 - ERROR - discord.app_commands.tree - Ignoring exception in command tree
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1151, in wrapper
+    await self._call(interaction)
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1283, in _call
+    command, options = self._get_app_command_options(data)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/discord/app_commands/tree.py", line 1187, in _get_app_command_options
+    raise CommandNotFound(name, parents)
+discord.app_commands.errors.CommandNotFound: Application command 'ping' not found
+2024-12-30 22:32:04,674 - DEBUG - discord.client - on_ready has successfully been registered as an event
+2024-12-30 22:32:04,674 - DEBUG - discord.client - on_ready has successfully been registered as an event
+2024-12-30 22:32:04,675 - DEBUG - discord.client - on_command_error has successfully been registered as an event
+2024-12-30 22:32:04,675 - DEBUG - discord.client - on_command_error has successfully been registered as an event
+2024-12-30 22:32:04,675 - DEBUG - asyncio - Using selector: EpollSelector
+2024-12-30 22:32:04,675 - INFO - discord.client - logging in using static token
+2024-12-30 22:32:04,675 - INFO - discord.client - logging in using static token
+2024-12-30 22:32:05,793 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: f266bfe42c09da632a38a29d5cdc418a).
+2024-12-30 22:32:05,793 - INFO - discord.gateway - Shard ID None has connected to Gateway (Session ID: f266bfe42c09da632a38a29d5cdc418a).
+2024-12-30 22:32:07,798 - INFO - __main__ - Logged in as execve (1184607631780892712)

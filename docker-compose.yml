@@ -1,6 +1,8 @@
 services:
-  bot:
-    container_name: discord-bot
+  discord-bot:
     build: .
+    container_name: discord-bot
+    environment:
+      DISCORD_BOT_TOKEN: ${DISCORD_BOT_TOKEN}
     volumes:
-      - ./bot:/app
+      - .:/app
