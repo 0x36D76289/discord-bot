@@ -1,0 +1,35 @@
+import discord
+from discord.ext import commands
+from discord import app_commands
+from utils.embeds import create_embed
+import aiohttp
+
+class Cat(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+        self.logger = bot.logger
+
+    @commands.hybrid_command(name="cat", description="Affiche une image de chat aléatoire.")
+    async def cat(self, ctx: commands.Context):
+        """Affiche une image de chat aléatoire."""
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://api.thecatapi.com/v1/images/search") as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                    cat_url = data[0]["url"]
+                    embed = create_embed(
+                        title="Chat !",
+                        color=discord.Color.random(),
+                        image=cat_url
+                    )
+                    await ctx.send(embed=embed)
+                else:
+                    embed = create_embed(
+                        title="Erreur",
+                        description="Impossible de récupérer une image de chat pour le moment.",
+                        color=discord.Color.red()
+                    )
+                    await ctx.send(embed=embed)
+
+async def setup(bot):
+    await bot.add_cog(Cat(bot))
