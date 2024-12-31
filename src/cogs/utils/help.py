@@ -8,9 +8,9 @@ class Help(commands.Cog):
         self.bot = bot
         self.logger = bot.logger
 
-    @commands.hybrid_command(name="help", description="Affiche la liste des commandes ou l'aide pour une commande spécifique.")
+    @commands.hybrid_command(name="aide", description="Affiche la liste des commandes ou l'aide pour une commande spécifique.")
     @app_commands.describe(command_name="Le nom de la commande pour laquelle vous voulez de l'aide (optionnel)")
-    async def help(self, ctx: commands.Context, command_name: str = None):
+    async def aide(self, ctx: commands.Context, command_name: str = None):
         """Affiche la liste des commandes ou l'aide pour une commande spécifique."""
         if command_name:
             command = self.bot.get_command(command_name)

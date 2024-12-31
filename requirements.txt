@@ -4,3 +4,5 @@ aiohttp
 youtube-dl
 whois
 dnspython
+Pyrogram
+beautifulsoup4

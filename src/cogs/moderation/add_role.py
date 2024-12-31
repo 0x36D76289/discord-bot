@@ -60,7 +60,7 @@ class AddRole(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
-        elif isinstance(error, commands.MissingRequiredArgument):
+        elif isinstance(erwror, commands.MissingRequiredArgument):
             embed = create_embed(
                 title="Erreur",
                 description="Il manque des arguments. Veuillez spécifier un membre et un rôle.",

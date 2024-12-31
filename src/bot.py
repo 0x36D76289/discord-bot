@@ -14,10 +14,12 @@ GUILD_ID = os.getenv("GUILD_ID")
 
 class MyBot(commands.Bot):
     def __init__(self, intents):
-        super().__init__(intents=intents, command_prefix="!")
+        super().__init__(intents=intents, command_prefix="/")
         self.logger = logger
 
     async def setup_hook(self):
+        self.remove_command('help')
+
         # Load cogs manually
         initial_extensions = [
             'cogs.admin.ban',
@@ -43,17 +45,18 @@ class MyBot(commands.Bot):
             'cogs.moderation.clear_warns',
             'cogs.osint.whois',
             'cogs.osint.dnslookup',
-            'cogs.osint.google_dorks',
+            'cogs.osint.reverse',
             'cogs.utils.fxtwitter',
             'cogs.utils.avatar',
             'cogs.utils.help',
             'cogs.utils.ping',
+            'cogs.utils.telegram_handler',
             'cogs.welcome.welcome'
         ]
         for extension in initial_extensions:
             try:
                 await self.load_extension(extension)
-                self.logger.info(f"Cog loaded: {extension}")
+                # self.logger.info(f"Cog loaded: {extension}")
             except Exception as e:
                 self.logger.error(f"Failed to load cog {extension}: {e}")
 
@@ -72,10 +75,19 @@ class MyBot(commands.Bot):
     async def on_ready(self):
         self.logger.info(f"Logged in as {self.user.name} ({self.user.id})")
 
+    async def on_command(self, ctx: commands.Context):
+        """Log command usage."""
+        self.logger.info(f"Command executed: {ctx.command} by {ctx.author} in {ctx.channel} (Guild: {ctx.guild})")
+
+    async def on_command_error(self, ctx: commands.Context, error):
+        """Log command errors."""
+        self.logger.error(f"Error in command {ctx.command}: {error}")
+
 # Configure intents
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
+intents.guilds = True
 intents.voice_states = True
 
 # Create bot instance

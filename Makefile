@@ -15,4 +15,10 @@ logs:
 shell:
 	docker-compose exec discord-bot /bin/bash
 
-.PHONY: build run stop logs shell
+clean:
+	docker-compose down --rmi all
+
+start:
+	python3 bot.py
+
+.PHONY: all build run stop logs shell clean start

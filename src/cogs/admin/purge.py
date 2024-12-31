@@ -15,6 +15,7 @@ class Purge(commands.Cog):
     )
     async def purge(self, ctx: commands.Context, amount: int):
         """Supprime un nombre spécifié de messages dans le canal actuel."""
+        self.logger.debug(f"Commande purge appelée avec amount={amount}")
         await ctx.channel.purge(limit=amount + 1)  # +1 pour inclure la commande elle-même
         self.logger.info(f"{amount} messages ont été supprimés dans {ctx.channel.name} par {ctx.author}")
 
@@ -24,6 +25,7 @@ class Purge(commands.Cog):
             color=discord.Color.green()
         )
         await ctx.send(embed=embed, delete_after=5)
+        self.logger.debug("Message de confirmation envoyé")
 
     @purge.error
     async def purge_error(self, ctx: commands.Context, error):
@@ -41,6 +43,7 @@ class Purge(commands.Cog):
                 color=discord.Color.red()
             )
             await ctx.send(embed=embed)
+        self.logger.error(f"Erreur lors de l'exécution de la commande purge: {error}")
 
 async def setup(bot):
     await bot.add_cog(Purge(bot))
